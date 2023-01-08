@@ -3,13 +3,13 @@ import "./Favorites.css";
 
 class Favorites extends Component {
   state = {
-    title: "Новый список",
+    title: "New list",
     movies: [{ imdbID: "tt0068646", title: "The Godfather", year: 1972 }],
   };
   render() {
     return (
       <div className="favorites">
-        <input value="Новый список" className="favorites__name" />
+        <input value="New list" className="favorites__name" />
         <ul className="favorites__list">
           {this.state.movies.map((item) => {
             return (

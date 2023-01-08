@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./SearchBox.css";
-
+import store from "../../store";
 class SearchBox extends Component {
   state = {
     searchLine: "",
@@ -10,6 +10,16 @@ class SearchBox extends Component {
   };
   searchBoxSubmitHandler = (e) => {
     e.preventDefault();
+    fetch(`https://www.omdbapi.com/?s=${this.state.searchLine}&apikey=382f90b0`)
+      .then((response) => response.json())
+      .then((data) => {
+        store.dispatch({
+          type: "SETMOVIES",
+          payload: {
+            setmovies: data.Search,
+          },
+        });
+      });
   };
   render() {
     const { searchLine } = this.state;
