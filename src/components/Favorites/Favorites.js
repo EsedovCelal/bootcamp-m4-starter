@@ -4,17 +4,16 @@ import "./Favorites.css";
 
 class Favorites extends Component {
   state = {
-    title: "New list",
     movies: [{ imdbID: "tt0068646", Title: "The Godfather", Year: 1972 }],
   };
-  // componentDidMount() {
-  //   store.subscribe(() => {
-  //     const state = store.getState();
-  //     this.setState({
-  //       movies: state.addmovies,
-  //     });
-  //   });
-  // }
+  componentDidMount() {
+    store.subscribe(() => {
+      const state = store.getState();
+      this.setState({
+        movies: state.addmovies,
+      });
+    });
+  }
   render() {
     return (
       <div className="favorites">

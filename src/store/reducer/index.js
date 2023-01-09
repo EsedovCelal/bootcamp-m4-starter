@@ -1,6 +1,6 @@
 const DEFAULT_STATE = {
   setmovies: [],
-  addmovie: [],
+  addmovies: [],
 };
 const reducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
@@ -11,13 +11,13 @@ const reducer = (state = DEFAULT_STATE, action) => {
       };
     case "ADDMOVIE":
       const foundmovie = state.setmovies.find(
-        (movie) => movie.imdbID === action.payload.imdbID
+        (movie) => movie.imdbID == action.payload.imdbID
       );
-      const currentmovie = [...state.addmovie, foundmovie];
+      const currentmovie = [...state.addmovies, foundmovie];
 
       return {
         ...state,
-        addmovie: currentmovie,
+        addmovies: currentmovie,
       };
     case "DELMOVIE":
       return state;
