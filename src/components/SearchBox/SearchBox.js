@@ -20,6 +20,7 @@ class SearchBox extends Component {
           },
         });
       });
+    console.log(store.getState());
   };
 
   render() {

@@ -1,11 +1,20 @@
 import React, { Component } from "react";
+import store from "../../store";
 import "./Favorites.css";
 
 class Favorites extends Component {
   state = {
     title: "New list",
-    movies: [{ imdbID: "tt0068646", title: "The Godfather", year: 1972 }],
+    movies: [{ imdbID: "tt0068646", Title: "The Godfather", Year: 1972 }],
   };
+  // componentDidMount() {
+  //   store.subscribe(() => {
+  //     const state = store.getState();
+  //     this.setState({
+  //       movies: state.addmovies,
+  //     });
+  //   });
+  // }
   render() {
     return (
       <div className="favorites">
@@ -13,8 +22,8 @@ class Favorites extends Component {
         <ul className="favorites__list">
           {this.state.movies.map((item) => {
             return (
-              <li key={item.id}>
-                {item.title} ({item.year})
+              <li key={item.imdbID}>
+                {item.Title} ({item.Year})
               </li>
             );
           })}
