@@ -4,13 +4,13 @@ import "./Favorites.css";
 
 class Favorites extends Component {
   state = {
-    movies: [{ imdbID: "tt0068646", Title: "The Godfather", Year: 1972 }],
+    movies: [],
   };
   componentDidMount() {
     store.subscribe(() => {
       const state = store.getState();
       this.setState({
-        movies: state.addmovies,
+        movies: state.addedmovies,
       });
     });
   }
@@ -21,9 +21,12 @@ class Favorites extends Component {
         <ul className="favorites__list">
           {this.state.movies.map((item) => {
             return (
-              <li key={item.imdbID}>
-                {item.Title} ({item.Year})
-              </li>
+              <div>
+                <li key={item.imdbID}>
+                  {item.Title} ({item.Year})
+                </li>
+                <button>delete</button>
+              </div>
             );
           })}
         </ul>
