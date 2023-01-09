@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import store from "../../store";
+import { deletemovie } from "../../store/action";
 import "./Favorites.css";
 
 class Favorites extends Component {
@@ -14,6 +15,9 @@ class Favorites extends Component {
       });
     });
   }
+  deleteMovie(imdbID) {
+    store.dispatch(deletemovie(imdbID));
+  }
   render() {
     return (
       <div className="favorites">
@@ -22,10 +26,12 @@ class Favorites extends Component {
           {this.state.movies.map((item) => {
             return (
               <div>
-                <li key={item.imdbID}>
+                <li key={item.imdbID} className="added_movie">
                   {item.Title} ({item.Year})
+                  <button onClick={() => this.deleteMovie(item.imdbID)}>
+                    x
+                  </button>
                 </li>
-                <button>delete</button>
               </div>
             );
           })}

@@ -16,16 +16,25 @@ const reducer = (state = DEFAULT_STATE, action) => {
       const samemovie = state.addedmovies.find(
         (movie) => movie.imdbID === action.payload.imdbID
       );
-      if (foundmovie !== samemovie) {
+      if (!samemovie) {
         const currentmovie = [...state.addedmovies, foundmovie];
         return {
           ...state,
           addedmovies: currentmovie,
         };
+      } else {
+        return {
+          ...state,
+        };
       }
-      break;
-    case "DELMOVIE":
-      return state;
+    case "DELETEMOVIE":
+      const addedmovies = state.addedmovies.filter(
+        (wantdelete) => wantdelete.imdbID !== action.payload.imdbID
+      );
+      return {
+        ...state,
+        addedmovies,
+      };
     default:
       return state;
   }

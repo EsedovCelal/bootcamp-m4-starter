@@ -1,16 +1,8 @@
-export const setmovies = (param) => {
+export function deletemovie(imdbID) {
   return {
-    type: "SETMOVIES",
-    payload: param,
+    type: "DELETEMOVIE",
+    payload: {
+      imdbID: imdbID,
+    },
   };
-};
-export const addmovie = () => {
-  return {
-    type: "ADDMOVIE",
-  };
-};
-export const delmovie = () => {
-  return {
-    type: "DELMOVIE",
-  };
-};
+}
