@@ -21,11 +21,7 @@ class SearchBox extends Component {
         });
       });
   };
-  test = () => {
-    const state = store.getState();
-    this.setState({ movies: state.setmovies });
-    console.log(state.setmovies);
-  };
+
   render() {
     const { searchLine } = this.state;
 
@@ -49,7 +45,6 @@ class SearchBox extends Component {
             type="submit"
             className="search-box__form-submit"
             disabled={!searchLine}
-            onClick={this.test}
           >
             Search
           </button>
