@@ -5,32 +5,29 @@ import store from "../../store";
 
 class Movies extends Component {
   state = {
-    movies: [],
-    //   {
-    //     imdbID: "tt3896198",
-    //     title: "Guardians of the Galaxy Vol. 2",
-    //     year: 2017,
-    //     poster:
-    //       "https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg",
-    //   },
-    //   {
-    //     imdbID: "tt0068646",
-    //     title: "The Godfather",
-    //     year: 1972,
-    //     poster:
-    //       "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
-    //   },
+    movies: [
+      {
+        imdbID: "tt3896198",
+        title: "Guardians of the Galaxy Vol. 2",
+        year: 2017,
+        poster:
+          "https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg",
+      },
+      {
+        imdbID: "tt0068646",
+        title: "The Godfather",
+        year: 1972,
+        poster:
+          "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+      },
+    ],
   };
 
-  //   componentDidMount() {
-  //     // const state = store.getState(); //local state e gonder
-  //     // this.setState({ movies: state.setmovies });
-  //     console.log(state.setmovies);
-  //     console.log(this.state.movies);
-  //   }
-  componentWillUpdate() {
-    const state = store.getState(); //local state e gonder
+  componentDidMount() {
+    const state = store.getState();
     this.setState({ movies: state.setmovies });
+    console.log(state.setmovies);
+    console.log(this.state.movies);
   }
 
   render() {
