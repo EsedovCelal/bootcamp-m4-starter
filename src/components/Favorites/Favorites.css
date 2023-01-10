@@ -61,3 +61,9 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+.favorits_display_none {
+  display: none;
+}
+.favorits_display_block {
+  display: block;
+}

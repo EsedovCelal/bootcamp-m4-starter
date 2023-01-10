@@ -19,7 +19,6 @@ class ListPage extends Component {
   // TODO: запрос к сервер на получение списка
   // TODO: запросы к серверу по всем imdbID
   render() {
-    console.log(this.state.movies);
     return (
       <div className="list-page">
         <h1 className="list-page__title">My list</h1>

@@ -8,6 +8,7 @@ class Favorites extends Component {
   state = {
     movies: [],
     searchLine: "",
+    displaynone: "favorits_display_none",
   };
   searchLineChangeHandler = (e) => {
     this.setState({ searchLine: e.target.value });
@@ -23,8 +24,12 @@ class Favorites extends Component {
   deleteMovie(imdbID) {
     store.dispatch(deletemovie(imdbID));
   }
+  push_save_list_button(e) {
+    e.target.className = this.state.displaynone;
+    this.setState({ displaynone: "favorits_display_block" });
+  }
   render() {
-    const { searchLine, movies } = this.state;
+    const { searchLine, movies, displaynone } = this.state;
     return (
       <div className="favorites">
         <input
@@ -48,18 +53,21 @@ class Favorites extends Component {
             );
           })}
         </ul>
-        <Link to="/list/:id">
-          <button
-            disabled={!searchLine && movies}
-            type="button"
-            className="favorites__save-submit"
-          >
-            Save list
-          </button>
+        <button
+          disabled={!searchLine && movies}
+          type="button"
+          className="favorites__save-submit"
+          onClick={(e) => {
+            this.push_save_list_button(e);
+          }}
+        >
+          Save list
+        </button>
+        <Link className={displaynone} to="/list/:id">
+          Go to the list
         </Link>
       </div>
     );
   }
 }
-
 export default Favorites;
