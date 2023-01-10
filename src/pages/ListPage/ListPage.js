@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import store from "../../store";
 import "./ListPage.css";
 
 class ListPage extends Component {
@@ -6,12 +7,19 @@ class ListPage extends Component {
     movies: [{ title: "The Godfather", year: 1972, imdbID: "tt0068646" }],
   };
   componentDidMount() {
-    const id = this.props.match.params;
-    console.log(id);
-    // TODO: запрос к сервер на получение списка
-    // TODO: запросы к серверу по всем imdbID
+    store.subscribe(() => {
+      const state = store.getState();
+      this.setState({
+        movies: state.addedmovies,
+      });
+    });
   }
+  // const id = this.props.match.params;
+  // console.log(id);
+  // TODO: запрос к сервер на получение списка
+  // TODO: запросы к серверу по всем imdbID
   render() {
+    console.log(this.state.movies);
     return (
       <div className="list-page">
         <h1 className="list-page__title">My list</h1>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import store from "../../store";
 import { deletemovie } from "../../store/action";
 import "./Favorites.css";
@@ -6,6 +7,10 @@ import "./Favorites.css";
 class Favorites extends Component {
   state = {
     movies: [],
+    searchLine: "",
+  };
+  searchLineChangeHandler = (e) => {
+    this.setState({ searchLine: e.target.value });
   };
   componentDidMount() {
     store.subscribe(() => {
@@ -19,9 +24,16 @@ class Favorites extends Component {
     store.dispatch(deletemovie(imdbID));
   }
   render() {
+    const { searchLine, movies } = this.state;
     return (
       <div className="favorites">
-        <input value="New list" className="favorites__name" />
+        <input
+          onChange={this.searchLineChangeHandler}
+          value={searchLine}
+          placeholder="New list"
+          className="favorites__name"
+          type="text"
+        />
         <ul className="favorites__list">
           {this.state.movies.map((item) => {
             return (
@@ -36,9 +48,15 @@ class Favorites extends Component {
             );
           })}
         </ul>
-        <button type="button" className="favorites__save">
-          Save list
-        </button>
+        <Link to="/list/:id">
+          <button
+            disabled={!searchLine && movies}
+            type="button"
+            className="favorites__save-submit"
+          >
+            Save list
+          </button>
+        </Link>
       </div>
     );
   }

@@ -25,13 +25,39 @@
   font-size: 14px;
   transition: all 0.2s linear;
 }
-
-.favorites__save:hover {
-  cursor: pointer;
-  opacity: 0.9;
-  transition: all 0.2s linear;
-}
 .added_movie {
   display: flex;
   justify-content: space-between;
+}
+
+.favorites__save .favorites__save-input {
+  box-sizing: border-box;
+  display: block;
+  margin-top: 5px;
+  width: 300px;
+  font-size: 14px;
+  padding: 5px 10px;
+  border: 1px solid rgba(0, 8, 7, 0.5);
+}
+
+.favorites__save-submit {
+  margin-top: 17px;
+  padding: 5px 10px;
+  border: none;
+  transition: all 0.2s linear;
+  color: #ffeedb;
+  background-color: rgba(0, 8, 7);
+}
+
+.favorites__save-submit:hover:not(:disabled) {
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  background-color: #ffeedb;
+  color: rgba(0, 8, 7);
+}
+
+.favorites__save-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
