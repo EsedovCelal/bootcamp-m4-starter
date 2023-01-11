@@ -61,7 +61,7 @@ class Favorites extends Component {
                 <li className="added_movie">
                   {item.Title} ({item.Year})
                   <button onClick={() => this.deleteMovie(item.imdbID)}>
-                    x
+                    delete
                   </button>
                 </li>
               </div>

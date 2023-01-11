@@ -2,6 +2,7 @@
   box-sizing: border-box;
   border: 1px solid rgba(0, 8, 7);
   padding: 30px 20px;
+  border-radius: 10px;
 }
 
 .favorites__name {
@@ -28,8 +29,14 @@
 .added_movie {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
-
+.added_movie button {
+  background-color: rgba(0, 8, 7, 0.5);
+  height: 25px;
+  border-radius: 10px;
+  color: white;
+}
 .favorites__save .favorites__save-input {
   box-sizing: border-box;
   display: block;
@@ -47,6 +54,7 @@
   transition: all 0.2s linear;
   color: #ffeedb;
   background-color: rgba(0, 8, 7);
+  border-radius: 10px;
 }
 
 .favorites__save-submit:hover:not(:disabled) {
