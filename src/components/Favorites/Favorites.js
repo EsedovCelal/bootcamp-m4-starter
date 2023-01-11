@@ -9,6 +9,8 @@ class Favorites extends Component {
     movies: [],
     searchLine: "",
     displaynone: "favorits_display_none",
+    id: "",
+    value: "",
   };
   searchLineChangeHandler = (e) => {
     this.setState({ searchLine: e.target.value });
@@ -27,9 +29,22 @@ class Favorites extends Component {
   push_save_list_button(e) {
     e.target.className = this.state.displaynone;
     this.setState({ displaynone: "favorits_display_block" });
+    const data = {
+      title: this.state.searchLine,
+      movies: this.state.movies,
+    };
+    fetch(`https://acb-api.algoritmika.org/api/movies/list `, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((res) => this.setState({ id: res.id }));
   }
   render() {
-    const { searchLine, movies, displaynone } = this.state;
+    const { searchLine, movies, displaynone, id } = this.state;
     return (
       <div className="favorites">
         <input
@@ -63,7 +78,7 @@ class Favorites extends Component {
         >
           Save list
         </button>
-        <Link className={displaynone} to="/list/:id">
+        <Link className={displaynone} to={"/list/" + id}>
           Go to the list
         </Link>
       </div>

@@ -1,33 +1,37 @@
 import React, { Component } from "react";
-import store from "../../store";
+// import store from "../../store";
 import "./ListPage.css";
-
 class ListPage extends Component {
   state = {
-    movies: [{ title: "The Godfather", year: 1972, imdbID: "tt0068646" }],
+    movies: [],
+    title: "",
+    link: "https://www.imdb.com/title/",
   };
   componentDidMount() {
-    store.subscribe(() => {
-      const state = store.getState();
-      this.setState({
-        movies: state.addedmovies,
-      });
-    });
+    const id = this.props.match.params;
+    fetch(`https://acb-api.algoritmika.org/api/movies/list/${id.id}`)
+      .then((data) => data.json())
+      .then((data) =>
+        this.setState({
+          movies: data.movies,
+          title: data.title,
+        })
+      );
   }
-  // const id = this.props.match.params;
-  // console.log(id);
-  // TODO: запрос к сервер на получение списка
-  // TODO: запросы к серверу по всем imdbID
   render() {
     return (
       <div className="list-page">
-        <h1 className="list-page__title">My list</h1>
+        <h1 className="list-page__title">{this.state.title}</h1>
         <ul>
           {this.state.movies.map((item) => {
             return (
               <li key={item.imdbID}>
-                <a href="https://www.imdb.com/title/tt0068646/" target="_blank">
-                  {item.title} ({item.year})
+                <a
+                  href={this.state.link + item.imdbID}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {item.Title} ({item.Year})
                 </a>
               </li>
             );
@@ -37,5 +41,4 @@ class ListPage extends Component {
     );
   }
 }
-
 export default ListPage;
