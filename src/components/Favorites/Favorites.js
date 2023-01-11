@@ -57,8 +57,8 @@ class Favorites extends Component {
         <ul className="favorites__list">
           {this.state.movies.map((item) => {
             return (
-              <div>
-                <li key={item.imdbID} className="added_movie">
+              <div key={item.imdbID}>
+                <li className="added_movie">
                   {item.Title} ({item.Year})
                   <button onClick={() => this.deleteMovie(item.imdbID)}>
                     x
