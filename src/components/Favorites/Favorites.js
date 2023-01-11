@@ -27,6 +27,8 @@ class Favorites extends Component {
     store.dispatch(deletemovie(imdbID));
   }
   push_save_list_button(e) {
+    console.log(this.state.movies);
+    console.log(this.state.searchLine);
     e.target.className = this.state.displaynone;
     this.setState({ displaynone: "favorits_display_block" });
     const data = {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-// import store from "../../store";
 import "./ListPage.css";
+import Header from "../../components/Header/Header";
 class ListPage extends Component {
   state = {
     movies: [],
@@ -21,7 +21,8 @@ class ListPage extends Component {
   render() {
     return (
       <div className="list-page">
-        <h1 className="list-page__title">{this.state.title}</h1>
+        <Header />
+        <h1 className="list-page__title">You list name : {this.state.title}</h1>
         <ul>
           {this.state.movies.map((item) => {
             return (
