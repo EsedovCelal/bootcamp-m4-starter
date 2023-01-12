@@ -33,6 +33,7 @@ class ListPage extends Component {
                   rel="noreferrer"
                 >
                   {item.Title} ({item.Year})
+                  <hr />
                 </a>
               </li>
             );

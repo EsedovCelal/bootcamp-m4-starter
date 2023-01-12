@@ -27,8 +27,6 @@ class Favorites extends Component {
     store.dispatch(deletemovie(imdbID));
   }
   push_save_list_button(e) {
-    console.log(this.state.movies);
-    console.log(this.state.searchLine);
     e.target.className = this.state.displaynone;
     this.setState({ displaynone: "favorits_display_block" });
     const data = {
@@ -57,7 +55,7 @@ class Favorites extends Component {
           type="text"
         />
         <ul className="favorites__list">
-          {this.state.movies.map((item) => {
+          {movies.map((item) => {
             return (
               <div key={item.imdbID}>
                 <li className="added_movie">
@@ -66,6 +64,7 @@ class Favorites extends Component {
                     delete
                   </button>
                 </li>
+                <hr />
               </div>
             );
           })}
